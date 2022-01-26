@@ -1,0 +1,14 @@
+# /etc/systemd/system 配下に配置する
+# systemctl * uvicorn_activate.service で uvicornを起動する
+
+[Unit]
+Description=uvicorn activate
+After=network.target
+
+[Service]
+User=fastapi-user
+WorkingDirectory=/home/fastapi-user/fastapi/test-project
+ExecStart=/usr/bin/python3 uvicorn_activate.py
+
+[Install]
+WantedBy=multi-user.target
